@@ -1,0 +1,6 @@
+[
+  {"control_id":"IAM-01","description":"MFA required","expected":true,"actual":true},
+  {"control_id":"IAM-02","description":"Terminated account disabled","expected":false,"actual":true},
+  {"control_id":"DEV-01","description":"Disk encryption enabled","expected":true,"actual":true},
+  {"control_id":"EDR-01","description":"Endpoint protection active","expected":true,"actual":false}
+]
