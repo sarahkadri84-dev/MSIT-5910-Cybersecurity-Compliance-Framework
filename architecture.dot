@@ -1,0 +1,65 @@
+
+digraph G {
+  graph [rankdir=TB, bgcolor="white", pad=0.2, nodesep=0.35, ranksep=0.55, fontname="Times New Roman"];
+  node [shape=box, style="rounded", fontname="Times New Roman", fontsize=11, margin="0.12,0.08"];
+  edge [fontname="Times New Roman", fontsize=9, arrowsize=0.8];
+
+  subgraph cluster_inputs {
+    label="1. Workforce and Security Inputs"; style="rounded";
+    HR [label="Workforce lifecycle data\n(joiner / mover / leaver)"];
+    ADM [label="IT / Security Administrator\npolicy configuration & review"];
+    USER [label="Employees & Contractors\nauthentication / device use"];
+  }
+
+  subgraph cluster_control {
+    label="2. Rippling IT Control Plane"; style="rounded";
+    ID [label="Identity & Account Lifecycle\nprovisioning / deprovisioning / MFA"];
+    ACC [label="Access Governance\nRBAC / app access / privileged review"];
+    DEV [label="Device Management\nencryption / OS posture / inventory"];
+    POL [label="Policy & Workflow Engine\nconditional rules / notifications"];
+  }
+
+  subgraph cluster_endpoint {
+    label="3. Endpoint Security Telemetry"; style="rounded";
+    S1 [label="SentinelOne EDR\nagent status / endpoint protection"];
+    EP [label="Managed Endpoints\nWindows / macOS devices"];
+  }
+
+  subgraph cluster_eval {
+    label="4. Compliance Monitoring & Evaluation"; style="rounded";
+    MAP [label="Control Mapping\nNIST CSF 2.0 + selected CIS safeguards"];
+    RULE [label="Compliance Evaluation\nexpected vs. observed state"];
+    EX [label="Exception Register\ncontrol failure / owner / status"];
+    MET [label="Metrics\naccuracy, FP/FN, time-to-detect,\ntime-to-remediate, coverage, effort"];
+  }
+
+  subgraph cluster_outputs {
+    label="5. Outputs and Evidence"; style="rounded";
+    DASH [label="Dashboards & Reports\nsecurity posture / exception visibility"];
+    EVID [label="Evidence Repository\nredacted screenshots / synthetic records"];
+    LEAD [label="Leadership / Audit Review\nstatus, trends, traceability"];
+  }
+
+  HR -> ID [label="lifecycle events"];
+  ADM -> POL [label="policies"];
+  USER -> ID [label="auth"];
+  USER -> DEV [label="device enrollment"];
+  ID -> ACC;
+  DEV -> POL;
+  ACC -> POL;
+  EP -> S1 [dir=both, label="telemetry"];
+  EP -> DEV [label="posture"];
+  S1 -> RULE [label="EDR status"];
+  POL -> RULE [label="policy state"];
+  ID -> RULE [label="identity state"];
+  ACC -> RULE [label="access state"];
+  DEV -> RULE [label="device state"];
+  MAP -> RULE [label="control criteria"];
+  RULE -> EX [label="exceptions"];
+  RULE -> MET [label="test outcomes"];
+  EX -> DASH;
+  MET -> DASH;
+  DASH -> LEAD;
+  RULE -> EVID [label="evidence capture"];
+  EVID -> LEAD;
+}
