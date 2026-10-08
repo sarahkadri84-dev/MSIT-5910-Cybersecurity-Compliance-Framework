@@ -3,7 +3,14 @@ from pathlib import Path
 
 import pytest
 
-from src.compliance_evaluator import evaluate_batch, evaluate_scenario, is_compliant
+from src.compliance_evaluator import (
+    CONTROL_CATALOG,
+    ControlRule,
+    evaluate_batch,
+    evaluate_scenario,
+    is_compliant,
+    normalize_value,
+)
 
 
 def load_scenarios():
@@ -58,3 +65,17 @@ def test_unknown_control_is_rejected():
 def test_empty_batch_is_rejected():
     with pytest.raises(ValueError):
         evaluate_batch([])
+
+
+def test_non_string_value_is_preserved():
+    assert normalize_value(True) is True
+
+
+def test_unsupported_operator_is_rejected(monkeypatch):
+    monkeypatch.setitem(
+        CONTROL_CATALOG,
+        "TEST-INVALID",
+        ControlRule("TEST-INVALID", "Invalid test control", "unsupported", "x"),
+    )
+    with pytest.raises(ValueError):
+        is_compliant("TEST-INVALID", "x")
