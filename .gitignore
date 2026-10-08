@@ -1,0 +1,22 @@
+# Secrets and local configuration
+.env
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Unredacted/private evidence should never be committed
+private_evidence/
+unredacted_evidence/
