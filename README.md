@@ -65,6 +65,7 @@ These values describe the synthetic academic test set and are **not** a claim of
 - [Automated tests](tests/)
 - [Testing and results](docs/testing-and-results.md)
 - [Results summary](results/README.md)
+- [Performance summary](results/performance-summary.md)
 - [Security and privacy](docs/security-and-privacy.md)
 - [Deployment and maintenance](docs/deployment-and-maintenance.md)
 - [Prototype workflow visual](screenshots/prototype-workflow.svg)
