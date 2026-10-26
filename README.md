@@ -69,6 +69,7 @@ These values describe the synthetic academic test set and are **not** a claim of
 - [Deployment and maintenance](docs/deployment-and-maintenance.md)
 - [Prototype workflow visual](screenshots/prototype-workflow.svg)
 - [Demo walkthrough](demo/README.md)
+- [Sanitized research report](reports/research-report.md)
 - [Capstone report portfolio summary](reports/capstone-report-summary.md)
 
 ## Run Locally
