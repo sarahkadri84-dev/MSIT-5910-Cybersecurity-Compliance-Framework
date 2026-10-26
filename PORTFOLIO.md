@@ -16,6 +16,7 @@ This repository is the portfolio version of the MSIT 5910 capstone **Cybersecuri
 - [Deployment and maintenance](docs/deployment-and-maintenance.md)
 - [Prototype workflow visual](screenshots/prototype-workflow.svg)
 - [Demo walkthrough](demo/README.md)
+- [Sanitized research report](reports/research-report.md)
 - [Capstone report portfolio summary](reports/capstone-report-summary.md)
 
 ## Skills Demonstrated
