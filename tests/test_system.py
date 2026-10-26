@@ -93,3 +93,11 @@ def test_acceptance_missing_field_is_rejected(tmp_path):
             {"test_id": "ACC-03", "control_id": "IAM-01"},
             tmp_path / "missing.db",
         )
+
+
+def test_acceptance_non_dictionary_payload_is_rejected(tmp_path):
+    with pytest.raises(TypeError):
+        evaluate_and_store(
+            "not-a-dictionary",
+            tmp_path / "type_error.db",
+        )
