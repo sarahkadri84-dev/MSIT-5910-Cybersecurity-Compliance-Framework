@@ -1,4 +1,4 @@
-name: Unit 5 tests
+name: Capstone test suite
 
 on:
   push:
