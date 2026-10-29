@@ -10,7 +10,7 @@ The capstone investigates whether a lightweight, explicit control-evaluation fra
 
 ## Method
 
-The work progressed through problem definition, project planning, architecture, rule implementation, unit testing, CI/CD, system integration, performance evaluation, deployment planning, maintenance planning, and final technical documentation.
+The work progressed through problem definition, project planning, architecture, rule implementation, unit testing, continuous integration, system integration, performance evaluation, deployment planning, maintenance planning, and final technical documentation.
 
 ## Implementation
 
@@ -21,12 +21,19 @@ The portfolio implementation includes:
 - synthetic scenario data
 - SQLite evidence storage
 - a service layer connecting validation, evaluation, and persistence
-- PyTest-based unit, integration, system, and acceptance tests
-- GitHub Actions for automated validation
+- PyTest-based unit, integration, system, acceptance, and regression tests
+- GitHub Actions for automated continuous-integration validation
+- batch and integrated service/database demonstrations
 
-## Findings
+## Final Findings
 
-The controlled 20-scenario dataset produced 100% classification accuracy and 100% exception detection with no false positives or false negatives. System-level work also highlighted the importance of validating module boundaries and environment-specific CI behavior.
+The final public repository verifies 39 passing automated tests with 100% source-code coverage. The controlled 20-scenario dataset produced 100% classification accuracy and 100% exception detection with no false positives or false negatives. A documented 500-operation local performance exercise persisted all 500 records, with mean latency of approximately 1.54 ms, P95 latency of approximately 1.85 ms, and approximate throughput of 650 evaluations per second.
+
+These results describe synthetic and local academic evaluation and are not production-security, certification, or enterprise-scale performance claims.
+
+## Development Evidence
+
+Earlier system testing exposed a whitespace-normalization defect at the service boundary. The issue was corrected and the regression suite was rerun successfully. CI work also exposed an environment/import-path issue that was corrected before the final workflow reached its 100% coverage gate.
 
 ## Limitations
 
