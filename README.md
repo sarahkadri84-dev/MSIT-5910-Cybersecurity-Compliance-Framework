@@ -6,7 +6,7 @@ MSIT 5910 capstone project demonstrating a lightweight, testable framework for e
 
 ## Problem
 
-Small organizations often verify cybersecurity controls across multiple systems. That can make evidence fragmented, reviews inconsistent, and exception tracking unnecessarily manual.
+Small organizations often verify cybersecurity controls across multiple operational systems. That can make evidence fragmented, reviews inconsistent, and exception tracking unnecessarily manual.
 
 ## Solution
 
@@ -26,7 +26,7 @@ The project uses a five-layer design:
 - SQLite
 - PyTest and pytest-cov
 - Git and GitHub
-- GitHub Actions
+- GitHub Actions for continuous integration
 - NIST Cybersecurity Framework 2.0 as an organizing reference
 
 ## Key Features
@@ -36,22 +36,32 @@ The project uses a five-layer design:
 - Rule normalization and classification
 - SQLite evidence persistence
 - Service-layer validation
-- Unit, integration, system, and acceptance tests
+- Unit, integration, system, acceptance, and regression testing
 - Automated CI validation
+- Performance evaluation
 - Privacy-aware portfolio documentation
+- Deployment and maintenance planning
 
-## Controlled Results
+## Final Verification Status
 
 | Metric | Result |
 |---|---:|
+| Automated tests | 39 passed |
+| Source-code coverage | 100% |
 | Controlled scenarios | 20 |
 | Correct classifications | 20 |
-| Accuracy | 100% |
+| Controlled accuracy | 100% |
 | Exception detection rate | 100% |
 | False positives | 0 |
 | False negatives | 0 |
+| Performance operations | 500 |
+| Records persisted | 500 |
+| Mean latency | ~1.54 ms |
+| P95 latency | ~1.85 ms |
+| Approx. throughput | ~650 evaluations/second |
+| Observed record-loss events | 0 |
 
-These values describe the synthetic academic test set and are **not** a claim of production-security effectiveness.
+These values describe synthetic and local academic evaluation. They are **not** claims of production-security effectiveness, certification, or enterprise-scale capacity.
 
 ## Repository Guide
 
@@ -69,6 +79,8 @@ These values describe the synthetic academic test set and are **not** a claim of
 - [Security and privacy](docs/security-and-privacy.md)
 - [Deployment and maintenance](docs/deployment-and-maintenance.md)
 - [Prototype workflow visual](screenshots/prototype-workflow.svg)
+- [Batch demo](run_demo.py)
+- [Integrated service + SQLite demo](presentation_demo.py)
 - [Demo walkthrough](demo/README.md)
 - [Sanitized research report](reports/research-report.md)
 - [Capstone report portfolio summary](reports/capstone-report-summary.md)
@@ -79,8 +91,9 @@ These values describe the synthetic academic test set and are **not** a claim of
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 python -m pip install pytest pytest-cov
-python -m pytest -q --cov=src --cov-report=term-missing --cov-fail-under=100
 python run_demo.py
+python presentation_demo.py
+python -m pytest -q --cov=src --cov-report=term-missing --cov-fail-under=100
 ```
 
 ## Scope and Limitations
